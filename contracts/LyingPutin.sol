@@ -61,4 +61,9 @@ contract LyingPutin is ERC721, Ownable {
             _safeMint(msg.sender, newItemId);
         }
     }
+    
+    function withdraw() public onlyOwner {
+        uint balance = address(this).balance;
+        payable(msg.sender).transfer(balance);
+    }
 }
